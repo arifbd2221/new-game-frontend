@@ -102,7 +102,6 @@ const RegisterForm = () => {
           />
           {errors.phone && <p className="error">{errors.phone[0]}</p>}
         </div>
-        {errors.non_field_errors && <p className="error">{errors.non_field_errors[0]}</p>}
         <button type="submit" className="button">Submit</button>
       </form>
     </div>

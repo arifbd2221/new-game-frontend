@@ -1,0 +1,99 @@
+.leaderboard {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+  
+  .top-three {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .first .avatar {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .second .avatar,
+  .third .avatar {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .other-players {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1; 
+    overflow-x: hidden;
+  }
+  
+  .other-players .player {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    border-radius: 10px;
+    color: #fff;
+  }
+  
+  .other-players .player:nth-child(odd) {
+    background-color: #f0f0f0;
+  }
+  
+  .other-players .player:nth-child(even) {
+    background-color: #e0e0e0;
+  }
+
+
+  .leaderboard-header {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center; /* Center the text within the div */
+    margin: 0 auto; /* Center the div itself */
+    width: fit-content; /* Ensure the div only takes up the space it needs */
+    color: white;
+    
+  }
+
+  .head-container{
+    display: flex;
+    top: 0;
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    z-index: 1000;
+  }
+  
+
+  .scrollable-container{
+    overflow-y: auto !important; /* Override global overflow: hidden */
+    width: 100%;
+  }
+
+
+  @media (min-width: 1024px) {
+    .leaderboard {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      position: relative;
+      padding-left: 35%;
+      padding-right: 35%;
+    }
+  }

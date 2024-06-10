@@ -1,0 +1,298 @@
+.leaderboardheader {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: #ec5b22; /* Match the orange background */
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+  }
+  
+  .top-three {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    gap: 20px;
+  }
+  
+  .player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .player-first{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .player-second{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+  }
+
+  .player-third{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 40px;
+  }
+  
+  .first-avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 5px solid #fdd835; /* Circle border color */
+  }
+
+  .avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 5px solid #fdd835; /* Circle border color */
+  }
+  
+  .first .avatar {
+    width: 120px;
+    height: 120px;
+  }
+  
+
+  .rank-circle-second {
+    position: absolute;
+    bottom: 45%;
+    right: 10px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    padding: 5px 0px;
+    font-weight: bold;
+  }
+
+
+  .rank-circle-first{
+    position: absolute;
+    bottom: 40px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding: 3px 0px;
+  }
+
+
+  .rank-circle-third{
+    position: absolute;
+    bottom: 45%;
+    right: 50px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    padding: 5px 0px;
+    font-weight: bold;
+  }
+
+
+  
+  .first {
+    transform: translateY(-40px); /* Adjust this value to move the first player up */
+  }
+  
+  .name {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .score {
+    font-size: 1.2em;
+  }
+  
+  .back-button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-image: url('http://192.168.100.142:3000/ShareButton.png');
+    background-size: cover;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -100%);
+  }
+  
+  .back-button button:hover {
+    background-color: #333;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .top-three {
+      gap: 15px;
+    }
+  
+    .avatar {
+      width: 90px;
+      height: 90px;
+    }
+  
+    .first .avatar {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .rank-circle {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7em;
+        bottom: 40px;
+        right: 22px;
+    }
+  
+    .name, .score {
+      font-size: 1em;
+    }
+  
+    .back-button button {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .top-three {
+      gap: 10px;
+    }
+  
+    .first {
+      transform: translateY(-40px); /* Adjust this value to move the first player up */
+    }
+  
+    .avatar {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .first .avatar {
+      width: 90px;
+      height: 90px;
+    }
+  
+    .rank-circle {
+        width: 18px;
+        height: 18px;
+        font-size: 0.6em;
+        bottom: 40px;
+        right: 22px;
+    }
+  
+    .name, .score {
+      font-size: 0.9em;
+    }
+  
+    .back-button button {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .top-three {
+      gap: 5px;
+    }
+  
+    .avatar {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .first .avatar {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .rank-circle {
+        width: 15px;
+        height: 15px;
+        font-size: 0.5em;
+        bottom: 40px;
+        right: 22px;
+    }
+  
+    .name, .score {
+      font-size: 0.8em;
+    }
+  
+    .back-button button {
+      width: 35px;
+      height: 35px;
+    }
+  }
+
+  @media only screen and (min-width: 3840px) {
+    .top-three {
+        gap: 15px;
+      }
+    
+      .first {
+        transform: translateY(-15px); /* Adjust this value to move the first player up */
+      }
+    
+      .avatar {
+        width: 90px;
+        height: 90px;
+      }
+    
+      .first .avatar {
+        width: 100px;
+        height: 100px;
+      }
+    
+      .rank-circle {
+        width: 20px;
+        height: 20px;
+        font-size: 0.7em;
+        bottom: 40px;
+        right: 22px;
+      }
+    
+      .name, .score {
+        font-size: 1em;
+      }
+    
+      .back-button button {
+        width: 45px;
+        height: 45px;
+      }
+  }
+  

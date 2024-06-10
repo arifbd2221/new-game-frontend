@@ -1,0 +1,47 @@
+/* UserCard.css */
+.card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    margin-bottom: 1px;
+  }
+  
+  .rank {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .name {
+    flex: 1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  .score {
+    flex: 1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  

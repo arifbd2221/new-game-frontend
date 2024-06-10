@@ -38,7 +38,7 @@ const RegisterForm = () => {
       'Content-Type': 'application/json',
     };
 
-    axios.post("http://15.207.58.248:8000/game/players/", {
+    axios.post("https://15.207.58.248/game/players/", {
       name: formData.username,
       email: formData.email,
       phone: formData.phone,

@@ -26,7 +26,7 @@ export const PlayGame = () => {
             const headers = {
                 'Content-Type': 'application/json',
               }
-            axios.post("http://15.207.58.248:8000/game/game-scores/", {
+            axios.post("https://15.207.58.248/game/game-scores/", {
                 score: iframeData?.payload?.score,
                 player: user_id
             }, {headers: headers})

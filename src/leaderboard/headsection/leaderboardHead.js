@@ -46,28 +46,28 @@ const LeaderboardHead = ({top_three}) => {
   return (
     <div className="leaderboardheader">
          <div className="top-three">
-          {top_three && top_three.length > 1 && (
+          {top_three && top_three.length > 1 && top_three[1]?.player && (
             <div className="player-second second">
-              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[1]?.player?.profile_pic_id] || defaultAvatarUrl})` }}></div>
+              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[1].player.profile_pic_id] || defaultAvatarUrl})` }}></div>
               <div className="rank-circle-second">2</div>
-              <div className="name">{top_three[1]?.player?.name?.trim().split(' ')?.pop()}</div>
-              <div className="score">{top_three[1]?.score}</div>
+              <div className="name">{top_three[1].player.name.trim().split(' ').pop()}</div>
+              <div className="score">{top_three[1].score}</div>
             </div>
           )}
-          {top_three && top_three.length > 0 && (
+          {top_three && top_three.length > 0 && top_three[0]?.player && (
             <div className="player-first first">
-              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[0]?.player?.profile_pic_id] || defaultAvatarUrl})` }}></div>
+              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[0].player.profile_pic_id] || defaultAvatarUrl})` }}></div>
               <div className="rank-circle-first">1</div>
-              <div className="name">{top_three[0]?.player?.name?.trim().split(' ')?.pop()}</div>
-              <div className="score">{top_three[0]?.score}</div>
+              <div className="name">{top_three[0].player.name.trim().split(' ').pop()}</div>
+              <div className="score">{top_three[0].score}</div>
             </div>
           )}
-          {top_three && top_three.length > 2 && (
+          {top_three && top_three.length > 2 && top_three[2]?.player && (
             <div className="player-third third">
-              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[2]?.player?.profile_pic_id] || defaultAvatarUrl})` }}></div>
+              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[2].player.profile_pic_id] || defaultAvatarUrl})` }}></div>
               <div className="rank-circle-third">3</div>
-              <div className="name">{top_three[2]?.player?.name?.trim().split(' ')?.pop()}</div>
-              <div className="score">{top_three[2]?.score}</div>
+              <div className="name">{top_three[2].player.name.trim().split(' ').pop()}</div>
+              <div className="score">{top_three[2].score}</div>
             </div>
           )}
         </div>

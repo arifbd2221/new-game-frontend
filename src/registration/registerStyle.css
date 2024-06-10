@@ -73,6 +73,10 @@
     .form {
         padding-top: 15%;
       }
+      
+      .input-group{
+        width: 100%;
+      }
   }
   
   @media (max-width: 480px) {
@@ -94,6 +98,10 @@
     .form {
         padding-top: 15%;
       }
+
+      .input-group{
+        width: 100%;
+      }
   }
   
   @media (max-width: 600px) {
@@ -113,6 +121,10 @@
     }
     .form {
         padding-top: 15%;
+      }
+
+      .input-group{
+        width: 100%;
       }
   }
 

@@ -29,6 +29,11 @@ const avatars = [
   '/avatars/avatars_36.png', '/avatars/avatars_37.png', '/avatars/avatars_38.png', '/avatars/avatars_39.png', '/avatars/avatars_40.png', '/avatars/avatars_41.png', 
   '/avatars/avatars_42.png', '/avatars/avatars_43.png', '/avatars/avatars_44.png', '/avatars/avatars_47.png', '/avatars/avatars_48.png', '/avatars/avatars_49.png'
 ];
+
+
+const defaultAvatarUrl = 'path/to/default/avatar.png';
+
+
 const LeaderboardHead = ({top_three}) => {
   const history = useNavigate ();
 
@@ -40,25 +45,31 @@ const LeaderboardHead = ({top_three}) => {
 
   return (
     <div className="leaderboardheader">
-  <     div className="top-three">
-          <div className="player-second second">
-            <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[1].player.profile_pic_id]})` }}></div>
-            <div className="rank-circle-second">2</div>
-            <div className="name">{top_three[1].player.name.trim().split(' ')[top_three[1].player.name.trim().split(' ').length - 1]}</div>
-            <div className="score">{top_three[1].score}</div>
-          </div>
-          <div className="player-first first">
-            <div className="first-avatar" style={{ backgroundImage: `url(${avatars[top_three[0].player.profile_pic_id]})` }}></div>
-            <div className="rank-circle-first">1</div>
-            <div className="name">{top_three[0].player.name.trim().split(' ')[top_three[0].player.name.trim().split(' ').length - 1]}</div>
-            <div className="score">{top_three[0].score}</div>
-          </div>
-          <div className="player-third third">
-            <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[2].player.profile_pic_id]})` }}></div>
-            <div className="rank-circle-third">3</div>
-            <div className="name">{top_three[2].player.name.trim().split(' ')[top_three[2].player.name.trim().split(' ').length - 1]}</div>
-            <div className="score">{top_three[2].score}</div>
-          </div>
+         <div className="top-three">
+          {top_three && top_three.length > 1 && (
+            <div className="player-second second">
+              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[1]?.player?.profile_pic_id] || defaultAvatarUrl})` }}></div>
+              <div className="rank-circle-second">2</div>
+              <div className="name">{top_three[1]?.player?.name?.trim().split(' ')?.pop()}</div>
+              <div className="score">{top_three[1]?.score}</div>
+            </div>
+          )}
+          {top_three && top_three.length > 0 && (
+            <div className="player-first first">
+              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[0]?.player?.profile_pic_id] || defaultAvatarUrl})` }}></div>
+              <div className="rank-circle-first">1</div>
+              <div className="name">{top_three[0]?.player?.name?.trim().split(' ')?.pop()}</div>
+              <div className="score">{top_three[0]?.score}</div>
+            </div>
+          )}
+          {top_three && top_three.length > 2 && (
+            <div className="player-third third">
+              <div className="avatar" style={{ backgroundImage: `url(${avatars[top_three[2]?.player?.profile_pic_id] || defaultAvatarUrl})` }}></div>
+              <div className="rank-circle-third">3</div>
+              <div className="name">{top_three[2]?.player?.name?.trim().split(' ')?.pop()}</div>
+              <div className="score">{top_three[2]?.score}</div>
+            </div>
+          )}
         </div>
         <div className="back-button" onClick={handleClick}>
           

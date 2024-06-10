@@ -128,10 +128,3 @@ const pageStyle = {
     position: 'absolute',
     backgroundColor: '#000'
   };
-  
-  const frameStyleMobile = {
-    ...frameStyle,
-    position: 'fixed',
-    height: '100%',
-    overflow: 'hidden'
-  };

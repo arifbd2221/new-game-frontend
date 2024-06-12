@@ -80,6 +80,7 @@
     position: -webkit-sticky; /* For Safari */
     position: sticky;
     z-index: 1000;
+    background-color: black;
   }
   
 

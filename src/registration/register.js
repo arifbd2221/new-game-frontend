@@ -42,7 +42,7 @@ const RegisterForm = () => {
       name: formData.username,
       email: formData.email,
       phone: formData.phone,
-      profile_pic_id: getRandomNumber(0, 133)
+      profile_pic_id: getRandomNumber(0, 129)
     }, { headers: headers })
     .then(resp => {
       console.log('Response data:', resp.data);

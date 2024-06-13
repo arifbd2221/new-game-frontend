@@ -3,6 +3,18 @@ import { useRef, useEffect, createContext, useContext, useCallback } from 'react
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
+
+
+function isJSONParsable(str) {
+  try {
+      JSON.parse(str);
+      return true;
+  } catch (e) {
+      return false;
+  }
+}
+
+
 export const PlayGame = () => {
     const history = useNavigate ();
     const iframeRef = useRef(null);
@@ -16,18 +28,21 @@ export const PlayGame = () => {
     const size = useContext(WindowSizeContext);
   
     const handleIframeMessage = useCallback((e) => {
-        
-      let iframeData = e?.data;
+      if (!isJSONParsable(e?.data)) return;
 
-      if (iframeData?.event_type === "GG_GAME_OVER"){
-        console.log("game_over", iframeData.payload.score);
+      let iframeData = JSON.parse(e?.data);
+
+      console.log({iframeData});
+
+      if (iframeData?.event_type === "game_over"){
+        console.log("game_over", iframeData.score);
         if(localStorage){
             const user_id = localStorage.getItem("userid");
             const headers = {
                 'Content-Type': 'application/json',
               }
             axios.post("https://15.207.58.248/game/game-scores/", {
-                score: iframeData?.payload?.score,
+                score: iframeData?.score,
                 player: user_id
             }, {headers: headers})
             .then(resp => {
@@ -39,19 +54,6 @@ export const PlayGame = () => {
             })
         }
         
-      }
-  
-      if (e.data?.event_type === "GG_GAME_OVER") {
-        const { defaultData } = e.data?.payload;
-        console.log("GG_GAME_OVER", defaultData);
-        // iframeRef.current?.contentWindow &&
-        //     iframeRef.current.contentWindow.postMessage(
-        //       {
-        //         payload: { gameData },
-        //         event_type: "GG_SET_GAME_DATA"
-        //       },
-        //       "*"
-        //     );
       }
     }, [history])
   

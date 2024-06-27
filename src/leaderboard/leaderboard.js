@@ -66,7 +66,7 @@ const Leaderboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://15.207.58.248/game/leaderboard/'); // Replace with your API endpoint
+        const response = await axios.get('https://game1.makegame.io/game/leaderboard/'); // Replace with your API endpoint
         setLeaderboardData(response.data);
         console.log({leaderboardData});
       } catch (error) {

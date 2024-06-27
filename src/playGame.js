@@ -41,7 +41,7 @@ export const PlayGame = () => {
             const headers = {
                 'Content-Type': 'application/json',
               }
-            axios.post("https://15.207.58.248/game/game-scores/", {
+            axios.post("https://game1.makegame.io/game/game-scores/", {
                 score: iframeData?.score,
                 player: user_id
             }, {headers: headers})

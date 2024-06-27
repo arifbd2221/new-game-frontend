@@ -38,7 +38,7 @@ const RegisterForm = () => {
       'Content-Type': 'application/json',
     };
 
-    axios.post("https://15.207.58.248/game/players/", {
+    axios.post("https://game1.makegame.io/game/players/", {
       name: formData.username,
       email: formData.email,
       phone: formData.phone,

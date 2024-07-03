@@ -3,6 +3,7 @@ import axios from "axios";
 import LeaderboardHead from './headsection/leaderboardHead';
 import UserCard from '../leaderboard/leaderboardItem';
 import './LeaderboardStyle.css'; // Assuming you have a separate CSS file for styling
+import Loader from '../loader/loading';
 
 const avatars = [
   '/avatars/50-animals-avatar_1.png', '/avatars/50-animals-avatar_2.png', '/avatars/50-animals-avatar_3.png', '/avatars/50-animals-avatar_4.png', 
@@ -46,8 +47,13 @@ const colors = [
 
 
 const Leaderboard = () => {
+  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+  const [loading, setLoading] = useState(true);
   const [containerHeight, setContainerHeight] = useState(window.innerHeight);
   const [leaderboardData, setLeaderboardData] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -63,12 +69,41 @@ const Leaderboard = () => {
   }, []);
 
 
+
+  // useEffect(() => {
+  //   const userId = localStorage.getItem("userid");
+  //   console.log("Retrieved userId from localStorage:", userId); // Log the retrieved userId
+  //   setLoading(true);
+  //   const timer = setTimeout(() => {
+  //     console.log('Timer finished');
+  //     // Perform some action after the timer finishes
+  //     console.log("setCurrentUser", currentUser, userId);
+  //     setCurrentUser(userId);
+  //     setLoading(false);
+  //   }, 2000); // 5000 ms = 5 seconds
+
+  //   // Cleanup the timer when the component unmounts or when the effect re-runs
+  //   return () => clearTimeout(timer);
+  // }, []);
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://game1.makegame.io/game/leaderboard/'); // Replace with your API endpoint
         setLeaderboardData(response.data);
         console.log({leaderboardData});
+        const userId = localStorage.getItem("userid");
+        console.log("Retrieved userId from localStorage:", userId); // Log the retrieved userId
+
+        if (userId) {
+          await sleep(500); // Sleep for 1 second
+          setCurrentUser(userId);
+        } else {
+          console.warn("No userId found in localStorage");
+        }
+
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -77,6 +112,22 @@ const Leaderboard = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
+  useEffect(() => {
+    if (currentUser !== null) {
+      console.log("currentUser updated:", currentUser);
+    }
+  }, [currentUser]);
+
+
+  if (loading) {
+    return (
+      <div className="leaderboard-loader">
+        <Loader />
+      </div>
+    );
+  }
   
 
   return (
@@ -98,11 +149,13 @@ const Leaderboard = () => {
           {leaderboardData.map((player, index) => (
             <UserCard
             key={index}
+              id={String(player.player.id).trim()}
               rank={index+1}
               avatarUrl={avatars[player.player.profile_pic_id]}
               name={player.player.name.trim().split(' ')[player.player.name.trim().split(' ').length - 1]}
               score={player.score}
               color={colors[getRandomNumber(0,3)]}
+              currentUser={currentUser}
           />
           ))}
         </div>

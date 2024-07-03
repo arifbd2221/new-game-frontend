@@ -22,17 +22,59 @@ const RegisterForm = () => {
     phone: '',
   });
 
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validatePhoneNumber = (phone) => {
+    const re = /^01\d{9}$/; // Adjust the regex according to your phone number format requirements
+    return re.test(phone);
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
+
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: null });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form data submitted:', formData);
+    
+    const { email, phone } = formData;
+
+    // Clear previous errors
+    setErrors({});
+
+    let validationErrors = {};
+
+    // Validate email
+    if (!validateEmail(email)) {
+      validationErrors.email = ["Invalid email address"];
+    }
+
+     // Validate phone number
+  if (!validatePhoneNumber(phone)) {
+    validationErrors.phone = ["Phone number must start with 01 and be 11 digits long"];
+  }
+
+    // Add other validations as needed
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    } else {
+      // Proceed with form submission
+      console.log("Form data:", formData);
+      // Add form submission logic here
+    }
+
 
     const headers = {
       'Content-Type': 'application/json',
